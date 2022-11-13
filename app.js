@@ -1,10 +1,13 @@
 const express = require("express");
 const app = express();
-const port = 8080;
 const userRouter = require("./routes/users");
+const path = require("path");
 
+require("dotenv").config({
+  path: path.join(__dirname, ".env"),
+});
 app.use("/users", userRouter);
 
-app.listen(port, () => {
-  console.log(`server is listening at http://localhost:${port}`);
+app.listen(process.env.PORT, () => {
+  console.log(`server is listening at http://localhost:${process.env.PORT}`);
 });
